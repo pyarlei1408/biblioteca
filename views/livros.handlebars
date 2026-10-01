@@ -1,0 +1,59 @@
+<h1>Biblioteca</h1>
+
+<a href="/livros/cadastrar" class="cadastrar">
+    Cadastrar Livro
+</a>
+
+{{#if livros.length}}
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Ano</th>
+        <th>Ações</th>
+    </tr>
+
+    {{#each livros}}
+
+    <tr>
+        <td>{{id}}</td>
+        <td>{{titulo}}</td>
+        <td>{{autor}}</td>
+        <td>{{ano}}</td>
+
+        <td>
+
+            <a
+                href="/livros/editar/{{id}}"
+                class="editar">
+                Editar
+            </a>
+
+            <form
+                action="/livros/excluir/{{id}}"
+                method="POST"
+                style="display:inline">
+
+                <button
+                    type="submit"
+                    class="excluir">
+                    Excluir
+                </button>
+
+            </form>
+
+        </td>
+    </tr>
+
+    {{/each}}
+
+</table>
+
+{{else}}
+
+<p>Nenhum livro cadastrado.</p>
+
+{{/if}}
